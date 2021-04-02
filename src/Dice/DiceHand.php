@@ -13,6 +13,8 @@ class DiceHand
 
     const FACES = 6;
 
+    private int $sum = 0;
+
     public function __construct(int $diceQty)
     {
         for ($i = 0; $i < $diceQty; $i++)
@@ -21,7 +23,7 @@ class DiceHand
         }
     }
 
-    public function roll(int $diceQty): void 
+    public function roll(int $diceQty): void
     {
         $this->sum = 0;
         for ($i = 0; $i < $diceQty; $i++)
@@ -38,5 +40,10 @@ class DiceHand
             $res .= $this->allDice[$i]->getLastRoll() . ", ";
         }
         return $res . " = " . $this->sum;
+    }
+
+    public function getRollSum(): int
+    { 
+        return $this->sum;
     }
 }

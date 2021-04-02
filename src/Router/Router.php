@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Mos\Router;
 
+use Elmittil\Dice\DiceHand;
+
 use function Mos\Functions\{
     destroySession,
     redirectTo,
     renderView,
     renderTwigView,
     sendResponse,
-    url
+    url,
+    resetGame
 };
 
 /**
@@ -66,9 +69,44 @@ class Router
             return;
         } else if ($method === "GET" && $path === "/game21") {
             $data = [
+                "header" => "Game 21",
+                "spec_message" => "hi anya"
+            ];
+
+            $playerRolls = 0;
+            $computerRolls = 0;
+            $_SESSION['roll'] = array($playerRolls, $computerRolls);
+            $_SESSION['score'] = array();
+            $_SESSION['total'] = array(0 , 0);
+            $_SESSION['message'] = "";
+            $body = renderView("layout/game21.php", $data);
+            sendResponse($body);
+            return;
+        } else if ($method === "POST" && $path === "/game21/set-hand") {
+            $diceQty = (int)$_POST['diceQty'] ?? 1;
+            $_SESSION['diceQty'] = $diceQty;
+
+            redirectTo(url("/game21/play"));
+            return;
+        } else if ($method === "GET" && $path === "/game21/reset") {
+            resetGame();
+            redirectTo(url("/game21/play"));
+            return;
+        }else if ($method === "GET" && $path === "/game21/play") {
+            $data = [
+                "header" => "Game 21",
+            ];
+
+            
+            $body = renderView("layout/play.php", $data);
+            sendResponse($body);
+            return;
+        } else if ($method === "POST" && $path === "/game21/play") {
+            $data = [
                 "header" => "Game 21"
             ];
-            $body = renderView("layout/game21.php", $data);
+
+            $body = renderView("layout/play.php", $data);
             sendResponse($body);
             return;
         }

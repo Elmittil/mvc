@@ -11,7 +11,7 @@ class Dice
 {
     private ?int $roll = null;
 
-    private int $faces;
+    private int $faces = 6;
 
     public function __construct(int $faces_var)
     {
