@@ -5,10 +5,12 @@
  */
 
 declare(strict_types=1);
+
+use Elmittil\Dice\Dice;
+use Elmittil\Dice\DiceHand;
+use Elmittil\Dice\GraphicDice;
+
 use function Mos\Functions\url;
-use \Elmittil\Dice\Dice;
-use \Elmittil\Dice\DiceHand;
-use \Elmittil\Dice\GraphicDice;
 
 // print_r($data["playersHand"]);
 echo print_r($_SESSION);

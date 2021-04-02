@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 namespace Mos\Functions;
-use \Elmittil\Dice\Dice;
-use \Elmittil\Dice\DiceHand;
-use \Elmittil\Dice\GraphicDice;
+
+use Elmittil\Dice\Dice;
+use Elmittil\Dice\DiceHand;
+use Elmittil\Dice\GraphicDice;
 
 /**
  * Functions.
@@ -211,7 +212,8 @@ function destroySession(): void
 }
 
 
-function buttonRoll() {
+function buttonRoll()
+{
 
     $playersHand = new DiceHand(2);
     $computersHand = new DiceHand(2);
@@ -221,35 +223,36 @@ function buttonRoll() {
     $_SESSION['total'][0] = $_SESSION['total'][0] + $playersHand->getRollSum();
 
     if ($_SESSION['total'][0] > 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
     }
-    
+
     if ($_SESSION['total'][1] > 21) {
-        $_SESSION['message'] = "YOU WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["x", ""]);
         return;
     }
-    
+
     if ($_SESSION['total'][1] < 21 && $_SESSION['total'][1] < $_SESSION['total'][0]) {
         $computersHand->roll(2);
         $_SESSION['roll'][1] =  $computersHand->getRollSum();
         $_SESSION['total'][1] = $_SESSION['total'][1] + $computersHand->getRollSum();
-        if ($_SESSION['total'][1] > 21){
-            $_SESSION['message'] = "YOU WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
+        if ($_SESSION['total'][1] > 21) {
+            $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
             array_push($_SESSION['score'], ["x", ""]);
             return;
-        } 
+        }
     }
     if ($_SESSION['total'][1] == 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
     }
 }
 
-function buttonPass() {
+function buttonPass()
+{
     $computersHand = new DiceHand(2);
 
     while ($_SESSION['total'][1] <= $_SESSION['total'][0]) {
@@ -259,17 +262,18 @@ function buttonPass() {
     }
 
     if ($_SESSION['total'][1] <= 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
-    } else {
-        $_SESSION['message'] = "YOU WON!!! <p><a href='".url('/game21/reset')."'><input type='submit' value='NEXT ROUND'/></a></p>";
-        array_push($_SESSION['score'], ["x", ""]);
-        return;
     }
+
+    $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+    array_push($_SESSION['score'], ["x", ""]);
+    return;
 }
 
-function resetGame () {
+function resetGame()
+{
     $_SESSION['roll'] = array(0 , 0);
     $_SESSION['total'] = array(0 , 0);
     $_SESSION['message'] = "";

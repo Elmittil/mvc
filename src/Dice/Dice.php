@@ -13,10 +13,9 @@ class Dice
 
     private int $faces = 6;
 
-    public function __construct(int $faces_var)
+    public function __construct(int $facesVar)
     {
-        $this->faces = $faces_var;
-
+        $this->faces = $facesVar;
     }
     public function roll(): int
     {

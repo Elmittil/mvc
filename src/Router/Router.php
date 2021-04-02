@@ -92,12 +92,12 @@ class Router
             resetGame();
             redirectTo(url("/game21/play"));
             return;
-        }else if ($method === "GET" && $path === "/game21/play") {
+        } else if ($method === "GET" && $path === "/game21/play") {
             $data = [
                 "header" => "Game 21",
             ];
 
-            
+
             $body = renderView("layout/play.php", $data);
             sendResponse($body);
             return;

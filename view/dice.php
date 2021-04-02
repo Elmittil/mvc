@@ -6,10 +6,9 @@
 
 declare(strict_types=1);
 
-use \Elmittil\Dice\Dice;
-use \Elmittil\Dice\DiceHand;
-use \Elmittil\Dice\GraphicDice;
-
+use Elmittil\Dice\Dice;
+use Elmittil\Dice\DiceHand;
+use Elmittil\Dice\GraphicDice;
 
 $header = $header ?? null;
 $message = $message ?? null;
