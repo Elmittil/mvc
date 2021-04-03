@@ -223,13 +223,13 @@ function buttonRoll()
     $_SESSION['total'][0] = $_SESSION['total'][0] + $playersHand->getRollSum();
 
     if ($_SESSION['total'][0] > 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
     }
 
     if ($_SESSION['total'][1] > 21) {
-        $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["x", ""]);
         return;
     }
@@ -239,13 +239,13 @@ function buttonRoll()
         $_SESSION['roll'][1] =  $computersHand->getRollSum();
         $_SESSION['total'][1] = $_SESSION['total'][1] + $computersHand->getRollSum();
         if ($_SESSION['total'][1] > 21) {
-            $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+            $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
             array_push($_SESSION['score'], ["x", ""]);
             return;
         }
     }
     if ($_SESSION['total'][1] == 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
     }
@@ -262,12 +262,12 @@ function buttonPass()
     }
 
     if ($_SESSION['total'][1] <= 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
         array_push($_SESSION['score'], ["", "x"]);
         return;
     }
 
-    $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' value='NEXT ROUND'/></a></p>";
+    $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
     array_push($_SESSION['score'], ["x", ""]);
     return;
 }

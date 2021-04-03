@@ -69,7 +69,7 @@ class Router
             return;
         } else if ($method === "GET" && $path === "/game21") {
             $data = [
-                "header" => "Game 21",
+                "header" => "GAME 21",
                 "spec_message" => "hi anya"
             ];
 
@@ -94,7 +94,7 @@ class Router
             return;
         } else if ($method === "GET" && $path === "/game21/play") {
             $data = [
-                "header" => "Game 21",
+                "header" => "GAME 21",
             ];
 
 
@@ -103,7 +103,7 @@ class Router
             return;
         } else if ($method === "POST" && $path === "/game21/play") {
             $data = [
-                "header" => "Game 21"
+                "header" => "GAME 21"
             ];
 
             $body = renderView("layout/play.php", $data);

@@ -7,11 +7,111 @@ body {
 }
 
 main {
-    min-height: 20em;
+    min-height: 500px;
 }
 
 footer {
     border-top: 1px solid #ccc;
     min-height: 4em;
     text-align: center;
+}
+
+.game21-wrapper {
+    background-color: #F1FAEE;
+    min-height: 500px;
+    padding: 20px;
+    margin-top: 10px;
+    align-content: center;
+}
+
+.game-title {
+    color: #A8DADC;
+    text-align: center;
+    font-family: 'Teko', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+    margin: 20px;
+}
+
+.play-panel {
+    display: inline-block;
+    width: 100%;
+    margin: 0 30px;
+}
+
+.roll-button {
+    display: inline-block;
+    background-color: #E63946;
+    border-radius: 20px;
+    border: 3px dotted #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+    width: 40%;
+    margin: 0 3%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.new-game-button {
+    display: inline-block;
+    background-color: #457B9D;
+    border-radius: 20px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 37px;
+    padding: 20px;
+    width: 90%;
+    margin: 0 3%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.game-score {
+    margin: 20px 20%;
+    text-align: center;
+    font-family: 'Teko', sans-serif;
+    font-weight: 700;
+    color: #457B9D;
+    font-size: 30px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+
+}
+
+th,
+td {
+	padding: 15px;
+}
+
+th {
+    text-align: center;
+    background-color: #1D3557;
+    color: #F1FAEE;
+}
+
+.die-choice {
+    /* display: flex;
+    align-items: center; */
+    font-family: 'Teko', sans-serif;
+    font-weight: 700;
+    color: #457B9D;
+    font-size: 30px;
+}
+
+.radio-b {
+    margin: 0 40%;
 }
