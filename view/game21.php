@@ -20,17 +20,15 @@ $header = $header ?? null;
 ?>
 
 <div class="game21-wrapper">
-<h1 class="game-title"><?= $header ?></h1>
+    <h1 class="game-title"><?= $header ?></h1>
 
-<form action="<?= url("/game21/set-hand") ?>" method="post" class="die-choice">
-    <div class="radio-b">
-        <input type="radio" id="1" name="diceQty" value="1">
-        <label for="1">1 die</label><br>
-        <input type="radio" id="2" name="diceQty" value="2">
-        <label for="2">2 dice</label><br>
-    </div>
-    <button type="submit" class="new-game-button" name="start" value="Play">Play</button>
-</form>
-
+    <form action="<?= url("/game21/set-hand") ?>" method="post" class="die-choice">
+        <div class="radio-b">
+            <input type="radio" id="1" name="diceQty" value="1">
+            <label for="1">1 die</label><br>
+            <input type="radio" id="2" name="diceQty" value="2">
+            <label for="2">2 dice</label><br>
+        </div>
+        <button type="submit" class="new-game-button" name="start" value="Play">Play</button>
+    </form>
 </div>
-

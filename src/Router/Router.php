@@ -96,8 +96,6 @@ class Router
             $data = [
                 "header" => "GAME 21",
             ];
-
-
             $body = renderView("layout/play.php", $data);
             sendResponse($body);
             return;
@@ -105,7 +103,6 @@ class Router
             $data = [
                 "header" => "GAME 21"
             ];
-
             $body = renderView("layout/play.php", $data);
             sendResponse($body);
             return;
