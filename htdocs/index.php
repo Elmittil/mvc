@@ -82,6 +82,7 @@ switch ($routeInfo[0]) {
 // Send the reponse
 if (is_null($response)) {
     echo "The response object is null.";
+    var_dump($routeInfo);
 } else if (is_string($response)) {
     echo $response;
 } else {
