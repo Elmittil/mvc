@@ -17,12 +17,10 @@ use function Mos\Functions\{
 /**
  * Controller for the index route.
  */
-class Game21
+class Game21 extends ControllerBase
 {
     public function game21start(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $data = [
             "header" => "Game21",
         ];
@@ -35,24 +33,18 @@ class Game21
         $_SESSION['message'] = "";
         $body = renderView("layout/game21.php", $data);
 
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        return $this->response($body);
     }
 
     public function game21play(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $data = [
             "header" => "GAME 21",
         ];
 
         $body = renderView("layout/play.php", $data);
 
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        return $this->response($body);
     }
 
     public function game21sethand(): ResponseInterface

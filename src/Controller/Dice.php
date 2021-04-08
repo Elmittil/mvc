@@ -12,21 +12,16 @@ use function Mos\Functions\renderView;
 /**
  * Controller for the index route.
  */
-class Dice
+class Dice extends ControllerBase
 {
     public function __invoke(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $data = [
             "header" => "Dice",
             "message" => "Hello, this is the index page, rendered as a layout.",
         ];
 
         $body = renderView("layout/dice.php", $data);
-
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        return $this->response($body);
     }
 }
