@@ -35,6 +35,6 @@ $graphicDie->roll();
 <p><?= $diceHand->getLastHandRoll($diceQty); ?></p>
 
 <p>Graphical die rolls</p>
-<img src="../htdocs/<?= $graphicDie->graphic() ?>.png" alt="die">
+<img src="../htdocs/img/<?= $graphicDie->graphic() ?>.png" alt="die">
 
 <? var_dump($diceHand);

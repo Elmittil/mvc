@@ -13,7 +13,7 @@ use function Mos\Functions\url;
     <meta charset="utf-8">
     <title><?= $title ?? "No title" ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="<?= url("/favicon.ico") ?>">
+    <link rel="icon" href="<?= url("/img/favicon.ico") ?>">
     <link rel="stylesheet" type="text/css" href="<?= url("/css/style.css") ?>">
 </head>
 
@@ -29,6 +29,7 @@ use function Mos\Functions\url;
         <a href="<?= url("/no/such/path") ?>">Show 404 example</a> |
         <a href="<?= url("/dice") ?>">Dice</a> |
         <a href="<?= url("/game21") ?>">Game 21</a>
+        <a href="<?= url("/yatzy") ?>">Yatzy</a>
     </nav>
 </header>
 <main>
