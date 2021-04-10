@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mos\Controller;
 
-use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 
 use function Mos\Functions\{
@@ -17,8 +16,10 @@ use function Mos\Functions\{
 /**
  * Controller for the index route.
  */
-class Game21 extends ControllerBase
+class Game21
 {
+    use ControllerTrait;
+
     public function game21start(): ResponseInterface
     {
         $data = [
@@ -51,15 +52,13 @@ class Game21 extends ControllerBase
     {
         $diceQty = (int)$_POST['diceQty'] ?? 1;
         $_SESSION['diceQty'] = $diceQty;
-        
-        redirectTo(url("/game21/play"));
+
+        return $this->redirect(url("/game21/play"));
     }
 
     public function game21reset(): ResponseInterface
     {
         resetGame();
-        
-        redirectTo(url("/game21/play"));
+        return $this->redirect(url("/game21/play"));
     }
-  
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mos\Controller;
 
-use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 
 use function Mos\Functions\renderView;
@@ -12,8 +11,10 @@ use function Mos\Functions\renderView;
 /**
  * Controller for the index route.
  */
-class Index extends ControllerBase
+class Index
 {
+    use ControllerTrait;
+
     public function __invoke(): ResponseInterface
     {
         $data = [

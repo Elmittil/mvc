@@ -1,3 +1,0 @@
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Router/Router.php:24	The method dispatch() has a Cyclomatic Complexity of 25. The configured cyclomatic complexity threshold is 10.
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/functions.php:71	Missing class import via use statement (line '71', column '23').
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/functions.php:77	Missing class import via use statement (line '77', column '21').

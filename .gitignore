@@ -1,2 +1,9 @@
 vendor/
 .DS_Store
+autoload.php
+build/phpmd
+build/phpmd
+build/phpmd
+config.php
+build/phpmd
+build/phpmd
