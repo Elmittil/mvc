@@ -7,3 +7,4 @@ build/phpmd
 config.php
 build/phpmd
 build/phpmd
+.DS_Store
