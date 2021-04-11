@@ -15,10 +15,18 @@ class DiceHand
 
     private int $sum = 0;
 
-    public function __construct(int $diceQty)
+    public function __construct(int $diceQty, string $type)
     {
-        for ($i = 0; $i < $diceQty; $i++) {
-            $this->allDice[$i] = new Dice(self::FACES);
+        if ($type == "regular") {
+            for ($i = 0; $i < $diceQty; $i++) {
+                $this->allDice[$i] = new Dice(self::FACES);
+            }
+        }
+
+        if ($type == "graphic") {
+            for ($i = 0; $i < $diceQty; $i++) {
+                $this->allDice[$i] = new GraphicDice();
+            }
         }
     }
 
@@ -37,6 +45,15 @@ class DiceHand
             $res .= $this->allDice[$i]->getLastRoll() . ", ";
         }
         return $res . " = " . $this->sum;
+    }
+
+    public function getLastHandRollArray(int $diceQty): array
+    {
+        $res = array();
+        for ($i = 0; $i < $diceQty; $i++) {
+            $res[$i] = $this->allDice[$i]->getLastRoll();
+        }
+        return $res;
     }
 
     public function getRollSum(): int

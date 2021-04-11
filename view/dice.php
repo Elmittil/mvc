@@ -18,7 +18,7 @@ $die = new Dice($sides);
 $die->roll();
 
 $diceQty = 4;
-$diceHand = new DiceHand($diceQty);
+$diceHand = new DiceHand($diceQty, "regular");
 $diceHand->roll($diceQty);
 
 $graphicDie = new GraphicDice($sides);
