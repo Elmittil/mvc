@@ -209,7 +209,6 @@ function destroySession(): void
             $params["httponly"]
         );
     }
-
     session_destroy();
 }
 
@@ -217,8 +216,8 @@ function destroySession(): void
 function buttonRoll()
 {
 
-    $playersHand = new DiceHand(2);
-    $computersHand = new DiceHand(2);
+    $playersHand = new DiceHand(2, "regular");
+    $computersHand = new DiceHand(2, "regular");
 
     $playersHand->roll(2);
     $_SESSION['roll'][0] =  $playersHand->getRollSum();
@@ -255,7 +254,7 @@ function buttonRoll()
 
 function buttonPass()
 {
-    $computersHand = new DiceHand(2);
+    $computersHand = new DiceHand(2, "regular");
 
     while ($_SESSION['total'][1] <= $_SESSION['total'][0]) {
         $computersHand->roll(2);

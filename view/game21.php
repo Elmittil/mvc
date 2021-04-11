@@ -12,10 +12,7 @@ use Elmittil\Dice\GraphicDice;
 
 use function Mos\Functions\url;
 
-// print_r($data["playersHand"]);
-// echo print_r($_SESSION);
 $header = $header ?? null;
-// $playersHand = $data["playersHand"];
 
 ?>
 

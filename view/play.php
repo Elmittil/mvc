@@ -16,10 +16,7 @@ use function Mos\Functions\{
     buttonPass
 };
 
-// print_r($data["playersHand"]);
-// var_dump($_SESSION);
 $header = $header ?? null;
-// $playersHand = $data["playersHand"];
 
 ?>
 <div class="game21-wrapper">

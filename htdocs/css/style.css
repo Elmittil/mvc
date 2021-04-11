@@ -115,3 +115,49 @@ th {
 .radio-b {
     margin: 0 40%;
 }
+
+.diceBox [type="checkbox" i]  {
+    display: none;
+}
+
+.diceBox {
+    padding: 0 7%;
+}
+
+label {
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+
+label::before {
+    display: block;
+    position: absolute;
+    text-align: center;
+    transition-duration: 0.4s;
+}
+
+label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+  
+:checked+label {
+    border-color: #ddd;
+}
+
+:checked+label img {
+    transform: scale(0.9);
+    background-color: red;
+    opacity: .4;
+    z-index: -1;
+}

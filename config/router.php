@@ -40,6 +40,12 @@ $router->addGroup("/game21", function (RouteCollector $router) {
 
 $router->addRoute("GET", "/dice", "\Mos\Controller\Dice");
 
-$router->addGroup("/yatzy", function (RouteCollector $router) {
-    $router->addRoute("GET", "", ["\Mos\Controller\Yatzy", "intro"]);
+$router->addGroup("/yatzee", function (RouteCollector $router) {
+    $router->addRoute("GET", "", ["\Mos\Controller\Yatzee", "intro"]);
+    $router->addRoute("POST", "/play", ["\Mos\Controller\Yatzee", "play"]);
+    $router->addRoute("GET", "/play", ["\Mos\Controller\Yatzee", "play"]);
+    $router->addRoute("POST", "/re-roll", ["\Mos\Controller\Yatzee", "reroll"]);
+    $router->addRoute("POST", "/score", ["\Mos\Controller\Yatzee", "score"]);
+    $router->addRoute("POST", "/record-score", ["\Mos\Controller\Yatzee", "recordScore"]);
+    $router->addRoute("GET", "/game-over", ["\Mos\Controller\Yatzee", "gameOver"]);
 });

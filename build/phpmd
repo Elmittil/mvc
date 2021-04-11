@@ -1,0 +1,2 @@
+/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Controller/Yatzee.php:119	The method initialise uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Controller/Yatzee.php:137	Avoid variables with short names like $i. Configured minimum length is 3.

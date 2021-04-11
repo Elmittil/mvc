@@ -15,10 +15,9 @@ use function Mos\Functions\renderView;
 class ControllerBase
 {
     protected function response(
-            string $body, 
-            int $status = 200
-    ): ResponseInterface
-    {
+        string $body,
+        int $status = 200
+    ): ResponseInterface {
         $psr17Factory = new Psr17Factory();
 
         return $psr17Factory
