@@ -18,7 +18,7 @@ $die = new Dice($sides);
 $die->roll();
 
 $diceQty = 4;
-$diceHand = new DiceHand($diceQty);
+$diceHand = new DiceHand($diceQty, "regular");
 $diceHand->roll($diceQty);
 
 $graphicDie = new GraphicDice($sides);
@@ -35,6 +35,6 @@ $graphicDie->roll();
 <p><?= $diceHand->getLastHandRoll($diceQty); ?></p>
 
 <p>Graphical die rolls</p>
-<img src="../htdocs/<?= $graphicDie->graphic() ?>.png" alt="die">
+<img src="../htdocs/img/<?= $graphicDie->graphic() ?>.png" alt="die">
 
 <? var_dump($diceHand);

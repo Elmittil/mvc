@@ -1,3 +1,2 @@
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Router/Router.php:24	The method dispatch() has a Cyclomatic Complexity of 25. The configured cyclomatic complexity threshold is 10.
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/functions.php:71	Missing class import via use statement (line '71', column '23').
-/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/functions.php:77	Missing class import via use statement (line '77', column '21').
+/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Controller/Yatzee.php:119	The method initialise uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+/Users/anna_kovalieva/dbwebb-kurser/mvc/me/game/src/Controller/Yatzee.php:137	Avoid variables with short names like $i. Configured minimum length is 3.

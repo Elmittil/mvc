@@ -7,6 +7,8 @@ namespace Mos\Functions;
 use Elmittil\Dice\Dice;
 use Elmittil\Dice\DiceHand;
 use Elmittil\Dice\GraphicDice;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
 
 /**
  * Functions.
@@ -68,13 +70,13 @@ function renderTwigView(
     static $twig = null;
 
     if (is_null($twig)) {
-        $loader = new \Twig\Loader\FilesystemLoader(
+        $loader = new FilesystemLoader(
             INSTALL_PATH . "/view/twig"
         );
         // $twig = new \Twig\Environment($loader, [
         //     "cache" => INSTALL_PATH . "/cache/twig",
         // ]);
-        $twig = new \Twig\Environment($loader);
+        $twig = new Environment($loader);
     }
 
     return $twig->render($template, $data);
@@ -207,7 +209,6 @@ function destroySession(): void
             $params["httponly"]
         );
     }
-
     session_destroy();
 }
 
@@ -215,8 +216,8 @@ function destroySession(): void
 function buttonRoll()
 {
 
-    $playersHand = new DiceHand(2);
-    $computersHand = new DiceHand(2);
+    $playersHand = new DiceHand(2, "regular");
+    $computersHand = new DiceHand(2, "regular");
 
     $playersHand->roll(2);
     $_SESSION['roll'][0] =  $playersHand->getRollSum();
@@ -253,7 +254,7 @@ function buttonRoll()
 
 function buttonPass()
 {
-    $computersHand = new DiceHand(2);
+    $computersHand = new DiceHand(2, "regular");
 
     while ($_SESSION['total'][1] <= $_SESSION['total'][0]) {
         $computersHand->roll(2);
