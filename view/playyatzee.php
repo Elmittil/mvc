@@ -20,57 +20,52 @@ $chartArray = $_SESSION['chart']->getScoreChart();
 <div class="game21-wrapper">
     <h1 class="game-title"><?= $header ?></h1>
 
-    <? if ($chartArray["playsLeft"] > 0) {?>
-
+    <?php if ($chartArray["playsLeft"] > 0) { ?>
         <form method="POST" class="diceBox" action="<?= url("/yatzee/re-roll") ?>">
 
-            <? foreach ($_SESSION['rolledValues'] as $dieface)
-            { ?>
+            <?php  foreach ($_SESSION['rolledValues'] as $dieface) { ?>
                 <input type="checkbox" name="selectedDice[]" id="die<?= $n ?>" value=<?= $n ?> />
                 <label name="selectedDice[]" for="die<?= $n ?>">
                     <img src="../img/dice-<?= $dieface ?>.png" alt="die<?= $dieface ?>">
                 </label>
-                <? 
-                $n++;
+                <?php $n++;
             } ?>
-
             <div class="rerolls-section">
-                <? if ($_SESSION['rollsLeft'] > 0 ){?>
+                <?php if ($_SESSION['rollsLeft'] > 0) {?>
                     <button type="submit" class="roll-button">Re-roll</button>
-                <? } else {?>
+                <?php } else {?>
                     <h1 class >NO ROLLS LEFT</h1>
-                <? } ?>
+                <?php } ?>
             </div>
         </form>
 
-        <form method="POST" action="<?= url("/yatzee/score") ?>">
+        <form method="POST" action="<?= url("/yatzee/score") ?>" class="diceBox">
             <button type="submit" class="roll-button">CALCULATE</button>
         </form>
 
         <div class="possible-scores">
-            <form method="POST" action="<?= url("/yatzee/record-score") ?>">
-                <? if (isset($_SESSION['possibleScores'])) {
-                    foreach ($_SESSION['possibleScores'] as $key => $value) {?>
-                        
-                            <input type="radio"  name="selectedScore" value="<?= $key ?>" id="<?= $key ?>" 
-                            <? if (!empty($chartArray[$key]) || ($chartArray[$key] > -1)) { ?>
+            <form method="POST" action="<?= url("/yatzee/record-score") ?>" class="diceBox">
+                <div class="radio-scores">
+                    <?php if (isset($_SESSION['possibleScores'])) {
+                        foreach ($_SESSION['possibleScores'] as $key => $value) {?>
+                                <input type="radio"  name="selectedScore" value="<?= $key ?>" id="<?= $key ?>" 
+                                <?php if (!empty($chartArray[$key]) || ($chartArray[$key] > -1)) { ?>
                                     disabled
-                                <? } ?> 
-                            >
-                            <label for="<?= $key ?>" 
-                                <? if (!empty($chartArray[$key]) || ($chartArray[$key] > -1)) { ?>
-                                    style="text-decoration: line-through"
-                                <? } ?> 
-                            >
-                            <?= $key ?>'s score <?= $value ?>
-                            </label><br>
-                        <? }
-                    
-                } ?>
+                                <?php } ?> >
+                                <label for="<?= $key ?>" 
+                                    <?php if (!empty($chartArray[$key]) || ($chartArray[$key] > -1)) { ?>
+                                        style="text-decoration: line-through"
+                                    <?php } ?>
+                                >
+                                <?= $key ?>'s score <?= $value ?>
+                                </label><br>
+                        <?php }
+                    } ?>
+                </div>
                 <button type="submit" class="roll-button">Record Score</button>
             </form>
         </div>
-    <? } ?>
+    <?php } ?>
 
     <div class="game-score">
         <p>Score card</p>

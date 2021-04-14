@@ -48,8 +48,8 @@ footer {
     text-align: center;
     font-size: 40px;
     padding: 20px;
-    width: 40%;
-    margin: 0 3%;
+    width: 100%;
+    /* margin: 0 3%; */
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -122,6 +122,17 @@ th {
 
 .diceBox {
     padding: 0 7%;
+}
+
+.diceBox label {
+    font-family: 'Teko', sans-serif;
+    font-weight: 500;
+    color: #457B9D;
+    font-size: 20px;
+}
+
+.radio-scores {
+    margin: 10px 0 10px 40%
 }
 
 label {
