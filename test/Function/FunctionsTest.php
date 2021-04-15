@@ -92,4 +92,13 @@ class FunctionsTest extends TestCase
         destroySession();
         $this->assertEmpty($_SESSION);
     }
+
+     /**
+     * Test the function destroySession().
+     * @runInSeparateProcess
+     */
+    public function buttonRoll()
+    {
+        
+    }
 }
