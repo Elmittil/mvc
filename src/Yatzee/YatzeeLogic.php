@@ -16,10 +16,10 @@ class YatzeeLogic
     private int $diceQty = 5;
     private ScoreChart $scoreChart;
 
-    public function __construct(ScoreChart $chart)
+    public function __construct(array $chart = null)
     {
         //cretae new scoring sheet
-        $this->scoreChart = $chart;
+        $this->scoreChart = new ScoreChart($chart);
         //create dice hand with graphic dice
         $this->diceHand = new DiceHand($this->diceQty, "graphic");
     }

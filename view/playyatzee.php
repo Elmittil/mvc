@@ -14,7 +14,8 @@ use function Mos\Functions\{
 
 $header = $header ?? null;
 $n = 1;
-$chartArray = $_SESSION['chart']->getScoreChart();
+
+$chartArray = $_SESSION['chart'];
 
 ?>
 <div class="game21-wrapper">
@@ -76,14 +77,16 @@ $chartArray = $_SESSION['chart']->getScoreChart();
                 <th>Score</th>
             </tr>
             <?php
-            foreach (array_keys($chartArray) as $key) :
-                if ($key != "playsLeft") {?>
-                    <tr>
-                        <td><?= $key ?></td>
-                        <td><?= $chartArray[$key] ?></td>
-                    </tr>
-                <?php }
-            endforeach ?>
+            if (!is_null($chartArray)){
+                foreach (array_keys($chartArray) as $key) :
+                    if ($key != "playsLeft") {?>
+                        <tr>
+                            <td><?= $key ?></td>
+                            <td><?= $chartArray[$key] ?></td>
+                        </tr>
+                    <?php }
+                endforeach; 
+            }?>
         </table>
 
     </div>

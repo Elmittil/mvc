@@ -12,21 +12,23 @@ class DiceHand
     private array $allDice;
 
     const FACES = 6;
-
+    private string $type;
     private int $sum = 0;
 
-    public function __construct(int $diceQty, string $type)
+    public function __construct(int $diceQty = 1, string $type = "regular")
     {
         if ($type == "regular") {
             for ($i = 0; $i < $diceQty; $i++) {
                 $this->allDice[$i] = new Dice(self::FACES);
             }
+            $this->type = $type;
         }
 
         if ($type == "graphic") {
             for ($i = 0; $i < $diceQty; $i++) {
                 $this->allDice[$i] = new GraphicDice();
             }
+            $this->type = $type;
         }
     }
 
@@ -60,4 +62,15 @@ class DiceHand
     {
         return $this->sum;
     }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getAllDice(): array
+    {
+        return $this->allDice;
+    }
+
 }

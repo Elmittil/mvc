@@ -11,18 +11,27 @@ class ScoreChart
 {
     private int $bonus = 35;
     private int $playsLeft = 6;
+    private array $chart;
 
-    private $chart = array(
-        "1" => null,
-        "2" => null,
-        "3" => null,
-        "4" => null,
-        "5" => null,
-        "6" => null,
-        "Bonus" => 0,
-        "Total" => 0,
-        "playsLeft" => 6
-    );
+    public function __construct(array $currentChart = null)
+    {
+        if (is_null($currentChart)) 
+        {
+            $this->chart = array(
+                "1" => null,
+                "2" => null,
+                "3" => null,
+                "4" => null,
+                "5" => null,
+                "6" => null,
+                "Bonus" => 0,
+                "Total" => 0,
+                "playsLeft" => 6
+            );
+        } else {
+            $this->chart = $currentChart;
+        }
+    }
 
     // private function checkIfFull(): bool
     // {

@@ -25,7 +25,7 @@ class Yatzee
 
     private YatzeeLogic $logic;
     private ScoreChart $scoreChart;
-
+    private array $currentSession;
 
     public function intro(): ResponseInterface
     {
@@ -48,7 +48,7 @@ class Yatzee
     {
         $this->initialise();
 
-        if (!array_key_exists('rolledValues', $_SESSION)) {
+        if (!array_key_exists('rolledValues', $this->currentSession)) {
             $this->logic->rollHand();
             $rolledDiceValues = $this->logic->getRolledDiceValues();
             $_SESSION['rolledValues'] = $rolledDiceValues;
@@ -91,6 +91,7 @@ class Yatzee
         if (isset($_POST['selectedScore'])) {
             $key = $_POST['selectedScore'];
             $this->logic->setScore($key, $_SESSION['possibleScores'][$key]);
+            $_SESSION['chart'] = $this->logic->getScores();
         }
         unset($_SESSION['possibleScores']);
         unset($_SESSION['rolledValues']);
@@ -114,13 +115,16 @@ class Yatzee
 
     private function initialise()
     {
-        if (array_key_exists('chart', $_SESSION)) {
-            $this->scoreChart = $_SESSION['chart'];
+        $this->currentSession = $_SESSION;
+        if (array_key_exists('chart', $this->currentSession)) {
+            $chartArray = $this->currentSession['chart'];
+            $this->scoreChart = new ScoreChart($chartArray);
         } else {
-            $this->scoreChart = new ScoreChart();
+            $newChart = new ScoreChart();
+            $this->scoreChart = $newChart;
         }
 
-        $this->logic = new YatzeeLogic($this->scoreChart);
+        $this->logic = new YatzeeLogic($this->scoreChart->getScoreChart());
     }
 
 
@@ -146,6 +150,6 @@ class Yatzee
 
     private function uploadChart()
     {
-        $_SESSION['chart'] = $this->scoreChart;
+        $_SESSION['chart'] = $this->scoreChart->getScoreChart();
     }
 }
