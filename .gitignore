@@ -9,3 +9,7 @@ build/phpmd
 build/phpmd
 build/coverage/
 .DS_Store
+.phpunit.result.cache
+.phpunit.xml
+build/coverage.clover
+build/phpunit
