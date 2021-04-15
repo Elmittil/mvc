@@ -10,7 +10,10 @@ declare(strict_types=1);
 
 use FastRoute\RouteCollector;
 
-$router = $router ?? null;
+$router = $router ?? new RouteCollector(
+    new \FastRoute\RouteParser\Std(),
+    new \FastRoute\DataGenerator\MarkBased()
+);
 
 $router->addRoute("GET", "/test", function () {
     // A quick and dirty way to test the router or the request.
@@ -28,6 +31,11 @@ $router->addGroup("/session", function (RouteCollector $router) {
 
 $router->addGroup("/some", function (RouteCollector $router) {
     $router->addRoute("GET", "/where", ["\Mos\Controller\Sample", "where"]);
+});
+
+$router->addGroup("/form", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\Mos\Controller\Form", "view"]);
+    $router->addRoute("POST", "/process", ["\Mos\Controller\Form", "process"]);
 });
 
 $router->addGroup("/game21", function (RouteCollector $router) {
