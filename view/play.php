@@ -17,6 +17,7 @@ use function Mos\Functions\{
 };
 
 $header = $header ?? null;
+$diceQty =  $_SESSION['diceQty'];
 
 ?>
 <div class="game21-wrapper">
@@ -24,9 +25,9 @@ $header = $header ?? null;
 
     <?php
     if (array_key_exists('button1', $_POST)) {
-            buttonRoll();
+            buttonRoll($diceQty);
     } else if (array_key_exists('button2', $_POST)) {
-            buttonPass();
+            buttonPass($diceQty);
     }
 
     if ($_SESSION['message'] == "") { ?>

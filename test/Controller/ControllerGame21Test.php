@@ -41,6 +41,7 @@ class ControllerGame21Test extends TestCase
     public function testControllerReturnsResponsePlay()
     {
         $controller = new Game21();
+        $_SESSION['diceQty'] = 2;
 
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $controller->game21play();

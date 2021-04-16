@@ -215,15 +215,11 @@ function destroySession(): void
 }
 
 
-function buttonRoll()
+function buttonRoll(int $diceQty): void
 {
-
-    $playersHand = new DiceHand(2, "regular");
-    $computersHand = new DiceHand(2, "regular");
-
-    $playersHand->roll(2);
-    $_SESSION['roll'][0] =  $playersHand->getRollSum();
-    $_SESSION['total'][0] = $_SESSION['total'][0] + $playersHand->getRollSum();
+    $hand = setupAndRoll(1, $diceQty);
+    $_SESSION['roll'][0] =  $hand->getRollSum();
+    $_SESSION['total'][0] = $_SESSION['total'][0] + $hand->getRollSum();
 
     if ($_SESSION['total'][0] > 21) {
         $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
@@ -238,9 +234,9 @@ function buttonRoll()
     }
 
     if ($_SESSION['total'][1] < 21 && $_SESSION['total'][1] < $_SESSION['total'][0]) {
-        $computersHand->roll(2);
-        $_SESSION['roll'][1] =  $computersHand->getRollSum();
-        $_SESSION['total'][1] = $_SESSION['total'][1] + $computersHand->getRollSum();
+        $hand = setupAndRoll(2, $diceQty);
+        $_SESSION['roll'][1] =  $hand->getRollSum();
+        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand->getRollSum();
         if ($_SESSION['total'][1] > 21) {
             $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
             array_push($_SESSION['score'], ["x", ""]);
@@ -254,14 +250,12 @@ function buttonRoll()
     }
 }
 
-function buttonPass()
+function buttonPass(int $diceQty): void
 {
-    $computersHand = new DiceHand(2, "regular");
-
     while ($_SESSION['total'][1] <= $_SESSION['total'][0]) {
-        $computersHand->roll(2);
-        $_SESSION['roll'][1] =  $computersHand->getRollSum();
-        $_SESSION['total'][1] = $_SESSION['total'][1] + $computersHand->getRollSum();
+        $hand = setupAndRoll(2, $diceQty);
+        $_SESSION['roll'][1] =  $hand->getRollSum();
+        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand->getRollSum();
     }
 
     if ($_SESSION['total'][1] <= 21) {
@@ -280,4 +274,16 @@ function resetGame()
     $_SESSION['roll'] = array(0 , 0);
     $_SESSION['total'] = array(0 , 0);
     $_SESSION['message'] = "";
+}
+
+function setupAndRoll(int $whosTurn, int $diceQty): DiceHand  {
+    $playersHand = new DiceHand($diceQty, "regular");
+    $computersHand = new DiceHand($diceQty, "regular");
+
+    if ($whosTurn == 1){
+        $playersHand->roll($diceQty);
+        return $playersHand;
+    }
+        $computersHand->roll($diceQty);
+        return $computersHand;
 }
