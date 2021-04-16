@@ -96,8 +96,6 @@ class YatzeeLogic
         return $totalPossibleScores;
     }
 
-
-
     public function setScore(string $face, int $value)
     {
         $this->scoreChart->recordScore($face, $value);

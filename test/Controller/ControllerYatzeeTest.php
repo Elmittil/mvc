@@ -12,8 +12,6 @@ use function Mos\Functions\{
     destroySession
 };
 
-require INSTALL_PATH . "/vendor/autoload.php";
-
 /**
  * Test cases for the controller Session.
  */
