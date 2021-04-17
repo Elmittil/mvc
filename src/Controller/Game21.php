@@ -50,7 +50,12 @@ class Game21
 
     public function game21sethand(): ResponseInterface
     {
-        $diceQty = (int)$_POST['diceQty'] ?? 1;
+        if (!isset($_POST['diceQty'])) {
+            $diceQty = 1;
+        } else {
+            $diceQty = $_POST['diceQty'];
+        }
+
         $_SESSION['diceQty'] = $diceQty;
 
         return $this->redirect(url("/game21/play"));
