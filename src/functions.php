@@ -217,35 +217,25 @@ function destroySession(): void
 
 function buttonRoll(int $diceQty): void
 {
-    $hand = setupAndRoll(1, $diceQty);
-    $_SESSION['roll'][0] =  $hand->getRollSum();
-    $_SESSION['total'][0] = $_SESSION['total'][0] + $hand->getRollSum();
+    $hand = setupAndRoll($diceQty);
+    $_SESSION['roll'][0] =  $hand;
+    $_SESSION['total'][0] = $_SESSION['total'][0] + $hand;
 
-    if ($_SESSION['total'][0] > 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
-        array_push($_SESSION['score'], ["", "x"]);
+    if (checkIfOver21("COMPUTER", $_SESSION['total'][0])) {
         return;
     }
 
-    if ($_SESSION['total'][1] > 21) {
-        $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
-        array_push($_SESSION['score'], ["x", ""]);
+    if (shouldComputerRoll($_SESSION['total'][0], $_SESSION['total'][1])) {
+        $hand = setupAndRoll($diceQty);
+        $_SESSION['roll'][1] =  $hand;
+        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand;
+    }    
+    
+    if (checkIfOver21("YOU", $_SESSION['total'][1])) {
         return;
     }
 
-    if ($_SESSION['total'][1] < 21 && $_SESSION['total'][1] < $_SESSION['total'][0]) {
-        $hand = setupAndRoll(2, $diceQty);
-        $_SESSION['roll'][1] =  $hand->getRollSum();
-        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand->getRollSum();
-        if ($_SESSION['total'][1] > 21) {
-            $_SESSION['message'] = "YOU WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
-            array_push($_SESSION['score'], ["x", ""]);
-            return;
-        }
-    }
-    if ($_SESSION['total'][1] == 21) {
-        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
-        array_push($_SESSION['score'], ["", "x"]);
+    if (checkIf21($_SESSION['total'][1])) {
         return;
     }
 }
@@ -253,9 +243,9 @@ function buttonRoll(int $diceQty): void
 function buttonPass(int $diceQty): void
 {
     while ($_SESSION['total'][1] <= $_SESSION['total'][0]) {
-        $hand = setupAndRoll(2, $diceQty);
-        $_SESSION['roll'][1] =  $hand->getRollSum();
-        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand->getRollSum();
+        $hand = setupAndRoll($diceQty);
+        $_SESSION['roll'][1] =  $hand;
+        $_SESSION['total'][1] = $_SESSION['total'][1] + $hand;
     }
 
     if ($_SESSION['total'][1] <= 21) {
@@ -276,14 +266,43 @@ function resetGame()
     $_SESSION['message'] = "";
 }
 
-function setupAndRoll(int $whosTurn, int $diceQty): DiceHand  {
-    $playersHand = new DiceHand($diceQty, "regular");
-    $computersHand = new DiceHand($diceQty, "regular");
+function setupAndRoll(int $diceQty): int  {
+    $hand = new DiceHand($diceQty, "regular");
+    $hand->roll($diceQty);
+    $rolled =  $hand->getRollSum();
+    return $rolled;
+}
 
-    if ($whosTurn == 1){
-        $playersHand->roll($diceQty);
-        return $playersHand;
+function shouldComputerRoll(int $playerScore, int $computerScore): bool
+{
+    if ($computerScore < 21 && $computerScore < $playerScore) {
+        return true;
     }
-        $computersHand->roll($diceQty);
-        return $computersHand;
+    return false;
+}
+
+function checkIfOver21(string $who, int $total): bool
+{
+    if ($total > 21)
+    {
+        $_SESSION['message'] = $who. " WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
+        if ($who === "COMPUTER") {
+            array_push($_SESSION['score'], ["", "x"]);
+        }
+        if ($who === "YOU") {
+            array_push($_SESSION['score'], ["x", ""]);
+        }     
+        return true;
+    }
+    return false;  
+}
+
+function checkIf21(int $total): bool
+{
+    if ($total == 21) {
+        $_SESSION['message'] = "COMPUTER WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
+        array_push($_SESSION['score'], ["", "x"]);
+        return true;
+    }
+    return false;
 }
