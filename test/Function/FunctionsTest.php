@@ -153,7 +153,7 @@ class FunctionsTest extends TestCase
      *      $_SESSION["message"] contains "WON"
      *      increases the value of $_SESSION["total"]
      *      increases the value of $_SESSION["roll"]
-     *      $_SESSION["score"] contains an entry "x" (WIN)
+     *      $_SESSION["message"] contains an entry "YOU" (player WIN)
      */
     public function testButtonRollPlayerWins()
     {
@@ -167,7 +167,7 @@ class FunctionsTest extends TestCase
         $_SESSION['message'] = "";
 
         buttonRoll($diceQty);
-        $this->assertContains("", $_SESSION['score'][0]);
+        $this->assertStringContainsString("YOU", $_SESSION['message']);
     }
 
     /**
@@ -219,5 +219,26 @@ class FunctionsTest extends TestCase
 
         buttonPass($diceQty);
         $this->assertContains("x", $_SESSION['score'][0]);
+    }
+
+      /**
+     * Test the function ButtonRoll for COMPUTER WIN WITH 21.
+     * Session contains a empty score, 1 die 
+     * Assert:
+     *      $_SESSION['message'] contains "COMPUTER"
+     */
+    public function testButtonRollComputerWinsWith21()
+    {
+        $diceQty = 1;
+        $_SESSION['roll'] = array(0, 0);
+        $_SESSION['score'] = array();
+        $_SESSION['total'] = [
+            0 => 10,
+            1 => 21
+        ];
+        $_SESSION['message'] = "";
+
+        buttonRoll($diceQty);
+        $this->assertStringContainsString("COMPUTER", $_SESSION['message']);
     }
 }
