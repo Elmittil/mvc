@@ -28,17 +28,16 @@ class ControllerYatzeeTest extends TestCase
     }
 
     /**
-     * Check that the controller returns a response with 
-     * intro().
+     * Check that the controller trigger exception handler code in config/config.php.
      */
-    public function testControllerReturnsResponseIntro()
+    public function testControllerUsesConfigException()
     {
         $controller = new Yatzee();
 
-        $exp = "\Psr\Http\Message\ResponseInterface";
-        $res = $controller->intro();
-        $this->assertInstanceOf($exp, $res);
+        $this->expectException(ArgumentCountError::class);
+        $res = $controller->intro(15);
     }
+
 
      /**
      * Check that the controller returns a response with 
@@ -76,10 +75,12 @@ class ControllerYatzeeTest extends TestCase
     {
         $_SESSION = $this->sessionSetup();
         $controller = new Yatzee();
-
+        $_POST['selectedScore'] = [3 => 9];
+        
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $controller->score();
         $this->assertInstanceOf($exp, $res);
+        unset($_POST['selectedScore']);
     }
 
     /**
@@ -90,11 +91,32 @@ class ControllerYatzeeTest extends TestCase
     {
         $_SESSION = $this->sessionSetup();
         $controller = new Yatzee();
+        $_SESSION['possibleScores'] = array();
 
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $controller->recordScore();
         $this->assertInstanceOf($exp, $res);
     }
+
+    /**
+     * Check that the controller returns a response with 
+     * scores with selected radio button
+     */
+    public function testControllerRecorsScoreWithSelectedRadioButton()
+    {
+        $_SESSION = $this->sessionSetup();
+        $controller = new Yatzee();
+        $_POST['selectedScore'] = "3";
+        $_SESSION['possibleScores'] = array("3" => 9);
+
+        $exp = "\Psr\Http\Message\ResponseInterface";
+        $res = $controller->recordScore();
+        $this->assertInstanceOf($exp, $res);
+        $exp = 9;
+        $this->assertEquals($exp, $_SESSION['chart']["3"]);
+        unset($_POST['selectedScore']);
+    }
+
 
     /**
      * Check that the controller returns a response with 
@@ -109,7 +131,56 @@ class ControllerYatzeeTest extends TestCase
         $this->assertInstanceOf($exp, $res);
     }
 
+    /**
+     * Check that the controller creates $_SESSION['rolledValues'] when .
+     */
+    public function testControllerCreatesSessionRolledValues()
+    {
+        
+        $newChart = new ScoreChart();
+        $chartArray = 
+        [
+            "1" => null,
+            "2" => null,
+            "3" => null,
+            "4" => null,
+            "5" => null,
+            "6" => null,
+            "Bonus" => 0,
+            "Total" => 0,
+            "playsLeft" => 6
+        ];
+        $_SESSION = [
+            "chart" => $chartArray,
+            "rollsLeft" => 2
+        ];
+        $controller = new Yatzee();
+
+        $exp = "rolledValues";
+        $controller->play();
+        $this->assertArrayHasKey($exp, $_SESSION);
+    }
+
+
+    /**
+     * Check that the controller returns a response with 
+     * RecordScore() and .
+     */
+    public function testRerollSelectedDice()
+    {
+        $_POST['selectedDice'] = [1, 2, 3];
+        $_SESSION = $this->sessionSetup();
+        $controller = new Yatzee();
+
+        $res = $controller->reroll();
+        $exp = "rolledValues";
+        $this->assertArrayHasKey($exp, $_SESSION);
+        $this->assertIsArray($_SESSION["rolledValues"]);
+    }
+     
+
     private function sessionSetup(){
+
         $newChart = new ScoreChart();
         $chartArray = 
         [
