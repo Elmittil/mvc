@@ -8,7 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 
 use function Mos\Functions\{
     renderView,
-    redirectTo,
     url,
     resetGame
 };
@@ -52,12 +51,12 @@ class Game21
     {
         if (!isset($_POST['diceQty'])) {
             $diceQty = 1;
-        } else {
-            $diceQty = $_POST['diceQty'];
+            $_SESSION['diceQty'] = $diceQty;
+            return $this->redirect(url("/game21/play"));
         }
 
+        $diceQty = $_POST['diceQty'];
         $_SESSION['diceQty'] = $diceQty;
-
         return $this->redirect(url("/game21/play"));
     }
 

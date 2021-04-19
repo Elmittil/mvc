@@ -229,8 +229,8 @@ function buttonRoll(int $diceQty): void
         $hand = setupAndRoll($diceQty);
         $_SESSION['roll'][1] =  $hand;
         $_SESSION['total'][1] = $_SESSION['total'][1] + $hand;
-    }    
-    
+    }
+
     if (checkIfOver21("YOU", $_SESSION['total'][1])) {
         return;
     }
@@ -266,7 +266,8 @@ function resetGame()
     $_SESSION['message'] = "";
 }
 
-function setupAndRoll(int $diceQty): int  {
+function setupAndRoll(int $diceQty): int
+{
     $hand = new DiceHand($diceQty, "regular");
     $hand->roll($diceQty);
     $rolled =  $hand->getRollSum();
@@ -283,18 +284,17 @@ function shouldComputerRoll(int $playerScore, int $computerScore): bool
 
 function checkIfOver21(string $who, int $total): bool
 {
-    if ($total > 21)
-    {
-        $_SESSION['message'] = $who. " WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
+    if ($total > 21) {
+        $_SESSION['message'] = $who . " WON!!! <p><a href='" . url('/game21/reset') . "'><input type='submit' class='new-game-button' value='NEXT ROUND'/></a></p>";
         if ($who === "COMPUTER") {
             array_push($_SESSION['score'], ["", "x"]);
         }
         if ($who === "YOU") {
             array_push($_SESSION['score'], ["x", ""]);
-        }     
+        }
         return true;
     }
-    return false;  
+    return false;
 }
 
 function checkIf21(int $total): bool

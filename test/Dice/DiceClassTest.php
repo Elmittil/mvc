@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Elmittil\Dice;
 
 use PHPUnit\Framework\TestCase;
+
 // use Elmittil\Dice\Dice;
 
 /**
@@ -67,7 +68,7 @@ class DiceClassTest extends TestCase
 
         $roll = $dice->roll();
 
-        $res = $roll > 0 && $roll <= $faces; 
+        $res = $roll > 0 && $roll <= $faces;
         $this->assertTrue($res);
     }
 
@@ -84,7 +85,7 @@ class DiceClassTest extends TestCase
         $dice->roll();
         $roll = $dice->getLastRoll();
 
-        $res = $roll > 0 && $roll <= $faces; 
+        $res = $roll > 0 && $roll <= $faces;
         $this->assertTrue($res);
     }
 }

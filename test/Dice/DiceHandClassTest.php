@@ -47,9 +47,9 @@ class DiceHandClassTest extends TestCase
         $exp = "graphic";
         $this->assertEquals($exp, $type);
     }
-    
+
     /**
-     * Construct object and verify that roll() changes the sum to 
+     * Construct object and verify that roll() changes the sum to
      * greater than 0
      */
     public function testRoll()

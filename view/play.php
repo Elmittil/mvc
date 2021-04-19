@@ -25,9 +25,9 @@ $diceQty =  $_SESSION['diceQty'];
 
     <?php
     if (array_key_exists('button1', $_POST)) {
-            buttonRoll($diceQty);
+            buttonRoll((int)$diceQty);
     } else if (array_key_exists('button2', $_POST)) {
-            buttonPass($diceQty);
+            buttonPass((int)$diceQty);
     }
 
     if ($_SESSION['message'] == "") { ?>

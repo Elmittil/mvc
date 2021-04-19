@@ -77,7 +77,7 @@ $chartArray = $_SESSION['chart'];
                 <th>Score</th>
             </tr>
             <?php
-            if (!is_null($chartArray)){
+            if (!is_null($chartArray)) {
                 foreach (array_keys($chartArray) as $key) :
                     if ($key != "playsLeft") {?>
                         <tr>
@@ -85,7 +85,7 @@ $chartArray = $_SESSION['chart'];
                             <td><?= $chartArray[$key] ?></td>
                         </tr>
                     <?php }
-                endforeach; 
+                endforeach;
             }?>
         </table>
 

@@ -5,10 +5,12 @@ declare(strict_types=1);
 // namespace Mos\Config;
 
 use PHPUnit\Framework\TestCase;
-use Laminas\HttpHandlerRunner\Emitter\SapiEmitter as Emitter;
-use function Mos\Functions\getRoutePath;
-use Mos\Controller\Error;
-use Psr\Http\Message\ResponseInterface;
+
+// use Laminas\HttpHandlerRunner\Emitter\SapiEmitter as Emitter;
+// use Mos\Controller\Error;
+// use Psr\Http\Message\ResponseInterface;
+
+// use function Mos\Functions\getRoutePath;
 
 /**
  * Test cases for the configuration file bootstrap.php.
@@ -22,19 +24,16 @@ class ConfigRouteTest extends TestCase
      *
      * Extract the path and route it to its handler.
      */
-    $method = "GET";
-    $path   = "/";
+        $method = "GET";
+        $path   = "/";
 
     // Load the routes from the configuration file
-    $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $router) {
-        require INSTALL_PATH . "/config/router.php";
-    });
+        $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $router) {
+            require INSTALL_PATH . "/config/router.php";
+        });
 
-    // Use the router to find the callback for the route path and retrieve
-    // the response.
-    $response = null;
-    $routeInfo = $dispatcher->dispatch($method, $path);
-    $exp = FastRoute\Dispatcher::FOUND;
-    $this->assertEquals($exp, $routeInfo[0]);
+        $routeInfo = $dispatcher->dispatch($method, $path);
+        $exp = FastRoute\Dispatcher::FOUND;
+        $this->assertEquals($exp, $routeInfo[0]);
     }
 }

@@ -17,7 +17,7 @@ use function Mos\Functions\{
  */
 class ControllerYatzeeTest extends TestCase
 {
-    
+
     /**
      * Try to create the controller class.
      */
@@ -28,7 +28,7 @@ class ControllerYatzeeTest extends TestCase
     }
 
      /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * play().
      */
     public function testControllerReturnsResponsePlay()
@@ -42,7 +42,7 @@ class ControllerYatzeeTest extends TestCase
     }
 
      /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * reroll().
      */
     public function testControllerReturnsResponseReroll()
@@ -56,7 +56,7 @@ class ControllerYatzeeTest extends TestCase
     }
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * score().
      */
     public function testControllerReturnsResponseScore()
@@ -64,7 +64,7 @@ class ControllerYatzeeTest extends TestCase
         $_SESSION = $this->sessionSetup();
         $controller = new Yatzee();
         $_POST['selectedScore'] = [3 => 9];
-        
+
         $exp = "\Psr\Http\Message\ResponseInterface";
         $res = $controller->score();
         $this->assertInstanceOf($exp, $res);
@@ -72,7 +72,7 @@ class ControllerYatzeeTest extends TestCase
     }
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * RecordScore().
      */
     public function testControllerReturnsResponseRecordScore()
@@ -87,7 +87,7 @@ class ControllerYatzeeTest extends TestCase
     }
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * scores with selected radio button
      */
     public function testControllerRecorsScoreWithSelectedRadioButton()
@@ -107,7 +107,7 @@ class ControllerYatzeeTest extends TestCase
 
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * GameOver().
      */
     public function testControllerReturnsResponseGameOver()
@@ -124,9 +124,7 @@ class ControllerYatzeeTest extends TestCase
      */
     public function testControllerCreatesSessionRolledValues()
     {
-        
-        $newChart = new ScoreChart();
-        $chartArray = 
+        $chartArray =
         [
             "1" => null,
             "2" => null,
@@ -151,26 +149,23 @@ class ControllerYatzeeTest extends TestCase
 
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * RecordScore() and .
      */
     public function testRerollSelectedDice()
     {
         $_POST['selectedDice'] = [1, 2, 3];
         $_SESSION = $this->sessionSetup();
-        $controller = new Yatzee();
 
-        $res = $controller->reroll();
         $exp = "rolledValues";
         $this->assertArrayHasKey($exp, $_SESSION);
         $this->assertIsArray($_SESSION["rolledValues"]);
     }
-     
 
-    private function sessionSetup(){
 
-        $newChart = new ScoreChart();
-        $chartArray = 
+    private function sessionSetup()
+    {
+        $chartArray =
         [
             "1" => null,
             "2" => null,

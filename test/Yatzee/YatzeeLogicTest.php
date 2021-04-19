@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class YatzeeLogicClassTest extends TestCase
 {
-    
+
     /**
      * Construct object and verify that it is of the expected class (YatzeeLogic).
      */
@@ -25,7 +25,7 @@ class YatzeeLogicClassTest extends TestCase
     }
 
     /**
-     * Construct object and verify that method startGame creates a new array 
+     * Construct object and verify that method startGame creates a new array
      * $rolledDiceValues.
      */
     public function testStartGame()
@@ -70,8 +70,8 @@ class YatzeeLogicClassTest extends TestCase
     }
 
     /**
-     * Construct object and verify that method scorableCombos returns an array 
-     * of the given length.  
+     * Construct object and verify that method scorableCombos returns an array
+     * of the given length.
      */
     public function testScorableCombos()
     {
@@ -90,8 +90,8 @@ class YatzeeLogicClassTest extends TestCase
 
 
     /**
-     * Construct object and verify that method comboTotal returns an array 
-     * of the given length.  
+     * Construct object and verify that method comboTotal returns an array
+     * of the given length.
      */
     public function testComboTotal()
     {
@@ -125,9 +125,7 @@ class YatzeeLogicClassTest extends TestCase
         $logic = new YatzeeLogic($chartArray);
 
         $logic->setScore($face, $value);
-        $chartFromObject = $scoreChart->getScoreChart();
         $res =  $logic->getScores()[$face];
         $this->assertEquals($value, $res);
     }
-    
 }

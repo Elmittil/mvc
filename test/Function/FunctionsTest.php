@@ -102,7 +102,7 @@ class FunctionsTest extends TestCase
      * Assert:
      *      increases the value of $_SESSION["total"]
      *      increases the value of $_SESSION["roll"]
-     *      
+     *
      */
     public function testButtonRollRollsDice()
     {
@@ -141,13 +141,12 @@ class FunctionsTest extends TestCase
         $this->assertTrue($_SESSION['total'][0] > 0);
         $this->assertTrue($_SESSION['roll'][0] > 0);
         $this->assertContains("x", $_SESSION['score'][0]);
-
     }
 
 
     /**
      * Test the function ButtonRoll for PLAYER WIN.
-     * Session contains a losing score for computer, 1 die 
+     * Session contains a losing score for computer, 1 die
      * (achieve $_SESSION["total"][1] > 21)
      * Assert:
      *      $_SESSION["message"] contains "WON"
@@ -172,7 +171,7 @@ class FunctionsTest extends TestCase
 
     /**
      * Test the function ButtonPass for COMPUTER WIN.
-     * Session contains a empty score, 1 die 
+     * Session contains a empty score, 1 die
      * Assert:
      *      $_SESSION['total'][1] > 0
      *      $_SESSION['roll'][1] > 0
@@ -199,7 +198,7 @@ class FunctionsTest extends TestCase
 
     /**
      * Test the function ButtonPass for PLAYER WIN.
-     * Session contains a empty score, 1 die 
+     * Session contains a empty score, 1 die
      * Assert:
      *      $_SESSION['total'][1] > 0
      *      $_SESSION['roll'][1] > 0
@@ -223,7 +222,7 @@ class FunctionsTest extends TestCase
 
       /**
      * Test the function ButtonRoll for COMPUTER WIN WITH 21.
-     * Session contains a empty score, 1 die 
+     * Session contains a empty score, 1 die
      * Assert:
      *      $_SESSION['message'] contains "COMPUTER"
      */

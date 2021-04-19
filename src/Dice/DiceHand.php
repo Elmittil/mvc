@@ -72,5 +72,4 @@ class DiceHand
     {
         return $this->allDice;
     }
-
 }

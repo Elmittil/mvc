@@ -22,7 +22,7 @@ class ControllerGame21Test extends TestCase
     }
 
     /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * game21start().
      */
     public function testControllerReturnsResponseStart()
@@ -35,7 +35,7 @@ class ControllerGame21Test extends TestCase
     }
 
      /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * game21play().
      */
     public function testControllerReturnsResponsePlay()
@@ -49,7 +49,7 @@ class ControllerGame21Test extends TestCase
     }
 
      /**
-     * Check that the controller returns a response with 
+     * Check that the controller returns a response with
      * game21reset().
      */
     public function testControllerReturnsResponseReset()
@@ -62,7 +62,7 @@ class ControllerGame21Test extends TestCase
     }
 
     // /**
-    //  * Check that the controller returns a response with 
+    //  * Check that the controller returns a response with
     //  * game21setHand().
     //  */
     // public function testControllerReturnsResponseSetHand()

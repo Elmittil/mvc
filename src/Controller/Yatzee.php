@@ -12,7 +12,6 @@ use Elmittil\Yatzee\YatzeeLogic;
 use function Mos\Functions\{
     destroySession,
     renderView,
-    redirectTo,
     url
 };
 
@@ -138,11 +137,11 @@ class Yatzee
 
         $newDiceQty = count($selectedDice);
         $newDiceValues = $this->logic->reRoll($newDiceQty);
-        $i = 0;
+        $ior = 0;
 
         foreach ($selectedDice as $selected) {
-            $originalRolls[$selected - 1] = $newDiceValues[$i];
-            $i++;
+            $originalRolls[$selected - 1] = $newDiceValues[$ior];
+            $ior++;
         }
         $_SESSION['rolledValues'] = $originalRolls;
     }

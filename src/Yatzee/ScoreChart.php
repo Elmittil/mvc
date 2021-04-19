@@ -15,8 +15,7 @@ class ScoreChart
 
     public function __construct(array $currentChart = null)
     {
-        if (is_null($currentChart)) 
-        {
+        if (is_null($currentChart)) {
             $this->chart = array(
                 "1" => null,
                 "2" => null,

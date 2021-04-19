@@ -32,9 +32,6 @@ class ScoreChartClassTest extends TestCase
      */
     public function testGetScoreChart()
     {
-        $face = 6;
-        $score = 36;
-
         $chart = new ScoreChart();
         $this->assertInstanceOf("\Elmittil\Yatzee\ScoreChart", $chart);
 
@@ -49,12 +46,11 @@ class ScoreChartClassTest extends TestCase
      */
     public function testRecordScorePlaysLeftLimit()
     {
-        $face = 6;
         $score = 36;
 
         $chart = new ScoreChart();
         $this->assertInstanceOf("\Elmittil\Yatzee\ScoreChart", $chart);
-        
+
         $res = array();
         for ($test = 1; $test < 7; $test++) {
             $res = $chart->recordScore((string)($test), $score);
@@ -63,6 +59,4 @@ class ScoreChartClassTest extends TestCase
         $exp = 35;
         $this->assertEquals($exp, $res["Bonus"]);
     }
-    
-
 }
