@@ -27,18 +27,6 @@ class ControllerYatzeeTest extends TestCase
         $this->assertInstanceOf("\Mos\Controller\Yatzee", $controller);
     }
 
-    /**
-     * Check that the controller trigger exception handler code in config/config.php.
-     */
-    public function testControllerUsesConfigException()
-    {
-        $controller = new Yatzee();
-
-        $this->expectException(ArgumentCountError::class);
-        $res = $controller->intro(15);
-    }
-
-
      /**
      * Check that the controller returns a response with 
      * play().
