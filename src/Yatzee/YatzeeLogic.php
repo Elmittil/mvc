@@ -38,7 +38,6 @@ class YatzeeLogic
 
     public function reRoll(int $newDiceqty): array
     {
-        $newDiceValues = array();
         $rerollDiceHand = new DiceHand($newDiceqty, "graphic");
         $rerollDiceHand->roll($newDiceqty);
         $newDiceValues = $rerollDiceHand->getLastHandRollArray($newDiceqty);

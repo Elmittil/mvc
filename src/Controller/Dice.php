@@ -6,8 +6,6 @@ namespace Mos\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 
-use function Mos\Functions\renderView;
-
 /**
  * Controller for the index route.
  */
