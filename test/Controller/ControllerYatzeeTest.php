@@ -27,7 +27,7 @@ class ControllerYatzeeTest extends TestCase
         $this->assertInstanceOf("\Mos\Controller\Yatzee", $controller);
     }
 
-     /**
+    /**
      * Check that the controller returns a response with
      * play().
      */
@@ -40,6 +40,24 @@ class ControllerYatzeeTest extends TestCase
         $res = $controller->play();
         $this->assertInstanceOf($exp, $res);
     }
+
+    // /**
+    //  * Check that the controller returns a response with
+    //  * play() no session['chart'] 
+    //  */
+    // public function testControllerReturnsResponsePlayNoSessionChart()
+    // {
+    //     $_SESSION = [
+    //         "rolledValues" => [1, 2, 3, 4, 5],
+    //         "rollsLeft" => 2
+    //     ];
+    //     $controller = new Yatzee();
+
+
+    //     $exp = "\Psr\Http\Message\ResponseInterface";
+    //     $res = $controller->play();
+    //     $this->assertInstanceOf($exp, $res);
+    // }
 
      /**
      * Check that the controller returns a response with

@@ -111,8 +111,7 @@ class Yatzee
         if (array_key_exists('chart', $this->currentSession)) {
             $chartArray = $this->currentSession['chart'];
             $this->scoreChart = new ScoreChart($chartArray);
-        }
-        if (!array_key_exists('chart', $this->currentSession)) {
+        } else {
             $newChart = new ScoreChart();
             $this->scoreChart = $newChart;
         }
