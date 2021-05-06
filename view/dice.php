@@ -37,4 +37,4 @@ $graphicDie->roll();
 <p>Graphical die rolls</p>
 <img src="../htdocs/img/<?= $graphicDie->graphic() ?>.png" alt="die">
 
-<? var_dump($diceHand);
+<?php var_dump($diceHand);
