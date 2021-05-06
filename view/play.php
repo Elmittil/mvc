@@ -10,12 +10,6 @@ use Elmittil\Dice\Dice;
 use Elmittil\Dice\DiceHand;
 use Elmittil\Dice\GraphicDice;
 
-use function Mos\Functions\{
-    url,
-    buttonRoll,
-    buttonPass
-};
-
 $header = $header ?? null;
 $diceQty =  $_SESSION['diceQty'];
 
