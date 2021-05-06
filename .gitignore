@@ -13,3 +13,4 @@ build/coverage/
 .phpunit.xml
 build/coverage.clover
 build/phpunit
+build/coverage.clover

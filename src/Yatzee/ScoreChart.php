@@ -27,9 +27,10 @@ class ScoreChart
                 "Total" => 0,
                 "playsLeft" => 6
             );
-        } else {
-            $this->chart = $currentChart;
+            return;
         }
+
+        $this->chart = $currentChart;
     }
 
     // private function checkIfFull(): bool

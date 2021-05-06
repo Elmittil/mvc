@@ -37,8 +37,6 @@ class Yatzee
         ];
 
         $body = renderView("layout/yatzee.php", $data);
-
-
         return $this->response($body);
     }
 
@@ -104,10 +102,6 @@ class Yatzee
         $this->scoreChart = new ScoreChart();
         $this->uploadChart();
 
-        // destroySession();
-        // $this->initialise();
-        // $this->uploadChart();
-
         $_SESSION['rollsLeft'] = 2;
         return $this->redirect(url("/yatzee/play"));
     }
@@ -118,7 +112,8 @@ class Yatzee
         if (array_key_exists('chart', $this->currentSession)) {
             $chartArray = $this->currentSession['chart'];
             $this->scoreChart = new ScoreChart($chartArray);
-        } else {
+        }
+        if (!array_key_exists('chart', $this->currentSession)) {
             $newChart = new ScoreChart();
             $this->scoreChart = $newChart;
         }
