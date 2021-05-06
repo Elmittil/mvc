@@ -61,16 +61,31 @@ class ControllerGame21Test extends TestCase
         $this->assertInstanceOf($exp, $res);
     }
 
-    // /**
-    //  * Check that the controller returns a response with
-    //  * game21setHand().
-    //  */
-    // public function testControllerReturnsResponseSetHand()
-    // {
-    //     $controller = new Game21();
+    /**
+     * Check that the controller returns a response with
+     * game21setHand().
+     */
+    public function testControllerReturnsResponseSetHand()
+    {
+        $controller = new Game21();
 
-    //     $exp = "\Psr\Http\Message\ResponseInterface";
-    //     $res = $controller->game21setHand();
-    //     $this->assertInstanceOf($exp, $res);
-    // }
+        $exp = "\Psr\Http\Message\ResponseInterface";
+        $res = $controller->game21setHand();
+        $this->assertInstanceOf($exp, $res);
+    }
+
+    /**
+     * Check that the controller returns a response with
+     * $_POST['diceQty'] set
+     * game21setHand().
+     */
+    public function testControllerReturnsResponseSetHandWithSession()
+    {
+        $controller = new Game21();
+
+        $_POST['diceQty'] = 2;
+        $exp = "\Psr\Http\Message\ResponseInterface";
+        $res = $controller->game21setHand();
+        $this->assertInstanceOf($exp, $res);
+    }
 }
