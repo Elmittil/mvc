@@ -21,7 +21,7 @@ $diceQty = 4;
 $diceHand = new DiceHand($diceQty, "regular");
 $diceHand->roll($diceQty);
 
-$graphicDie = new GraphicDice($sides);
+$graphicDie = /** @scrutinizer ignore-call */ new GraphicDice($sides);
 $graphicDie->roll();
 ?>
 
