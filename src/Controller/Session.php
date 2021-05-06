@@ -7,6 +7,11 @@ namespace Mos\Controller;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
+use function Mos\Functions\{
+    destroySession,
+    renderView,
+    url
+};
 
 /**
  * Controller for the session routes.

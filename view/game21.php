@@ -10,6 +10,8 @@ use Elmittil\Dice\Dice;
 use Elmittil\Dice\DiceHand;
 use Elmittil\Dice\GraphicDice;
 
+use function Mos\Functions\url;
+
 $header = $header ?? null;
 
 ?>

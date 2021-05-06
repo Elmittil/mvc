@@ -9,6 +9,11 @@ use Psr\Http\Message\ResponseInterface;
 use Elmittil\Yatzee\ScoreChart;
 use Elmittil\Yatzee\YatzeeLogic;
 
+use function Mos\Functions\{
+    renderView,
+    url
+};
+
 /**
  * Controller for Yatzy game.
  */
